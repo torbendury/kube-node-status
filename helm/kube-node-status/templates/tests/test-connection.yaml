@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "kube-node-status.fullname" . }}-test-connection"
+  labels:
+    {{- include "kube-node-status.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command:
+        - 'wget'
+      args:
+        - '--no-check-certificate'
+        - 'https://{{ include "kube-node-status.fullname" . }}:{{ .Values.service.port }}'
+  restartPolicy: Never

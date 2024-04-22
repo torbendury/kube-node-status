@@ -1,0 +1,10 @@
+##########################################################################################
+# kube-node-status successfully installed.
+#
+# See the running Pods:
+#
+#   kubectl get pods -n {{ .Release.Namespace }} \
+#        -l app.kubernetes.io/name={{ include "kube-node-status.fullname" . }}
+#
+# Start scraping the metrics on port 2112 using the /metrics endpoint.
+###########################################################################################
