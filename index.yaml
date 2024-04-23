@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   kube-node-status:
   - apiVersion: v2
+    appVersion: d07a5f5
+    created: "2024-04-23T13:05:47.368542089Z"
+    description: A metric exposer that retrieves the Kubernetes Node status and makes
+      it available as a Prometheus-scrabable metric. See the changelog at https://github.com/torbendury/kube-node-status/blob/main/CHANGELOG.md
+    digest: 1792b176cbd418d3140a5072fa28436b9d577481b6b5ac0f313165d63f9e1947
+    name: kube-node-status
+    type: application
+    urls:
+    - https://github.com/torbendury/kube-node-status/releases/download/kube-node-status-0.0.2/kube-node-status-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: "7963025"
     created: "2024-04-23T14:55:10.624334302+02:00"
     description: A metric exposer that retrieves the Kubernetes Node status and makes
@@ -12,4 +23,4 @@ entries:
     urls:
     - https://torbendury.github.io/kube-node-status/kube-node-status-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-23T14:55:10.623215794+02:00"
+generated: "2024-04-23T13:05:47.368556415Z"
