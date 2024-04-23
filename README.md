@@ -23,4 +23,3 @@ helm install kube-node-status kube-node-status/kube-node-status --create-namespa
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Basically, you can do whatever you want with this project, but you have to include the license and the license notice. And if you break something while using this piece of software or anything around it, I'm not responsible for that.
-
