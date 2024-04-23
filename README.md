@@ -10,6 +10,8 @@
 
 This becomes useful if you use a [managed version of kube-state-metrics](https://cloud.google.com/kubernetes-engine/docs/how-to/kube-state-metrics) which does not support retrieving Kubernetes node metrics and you are not able to use a self-managed version of it.
 
+**This project is under active development. Use with caution.**
+
 ## Installing
 
 Install it by using Helm:
