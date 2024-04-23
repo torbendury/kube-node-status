@@ -46,7 +46,7 @@ func recordMetrics(kc *kubernetes.Clientset) {
 			}
 			nodesReady.Set(float64(readyNodes))
 			nodesNotReady.Set(float64(len(nodes.Items) - readyNodes))
-			time.Sleep(500 * time.Millisecond)
+			time.Sleep(5 * time.Second)
 		}
 	}()
 }

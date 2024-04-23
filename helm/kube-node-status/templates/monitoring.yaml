@@ -9,8 +9,8 @@ spec:
     matchLabels:
       {{- include "kube-node-status.selectorLabels" . | nindent 6 }}
   endpoints:
-  - port: metrics
-    interval: 30s
+  - port: http
+    interval: 5s
 {{- end }}
 
 {{- if .Values.metricScraping.prometheusOperator }}
