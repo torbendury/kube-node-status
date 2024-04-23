@@ -1,0 +1,29 @@
+{{- if .Values.metricScraping.googleManagedPrometheus }}
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: kube-node-status
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "kube-node-status.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - port: metrics
+    interval: 30s
+{{- end }}
+
+{{- if .Values.metricScraping.prometheusOperator }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-node-status
+  labels:
+    {{- include "kube-node-status.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "kube-node-status.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - port: http
+{{- end }}

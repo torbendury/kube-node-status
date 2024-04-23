@@ -59,6 +59,8 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-controller:
-  # The response message to send when a NetworkPolicy is denied
-  response: "This webhook denies all NetworkPolicies"
+# Whether to enable auto instrumented metric scraping for Google Managed Prometheus
+# or alternatively self managaed Prometheus with Prometheus Operator
+metricScraping:
+  googleManagedPrometheus: false
+  prometheusOperator: false
