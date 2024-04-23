@@ -3,4 +3,4 @@ name: kube-node-status
 description: A metric exposer that retrieves the Kubernetes Node status and makes it available as a Prometheus-scrabable metric. See the changelog at https://github.com/torbendury/kube-node-status/blob/main/CHANGELOG.md
 type: application
 version: 0.0.1
-appVersion: "7963025"
+appVersion: "13eae6c"
