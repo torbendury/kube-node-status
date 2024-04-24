@@ -29,3 +29,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Release
 
 The application is released via Helm Chart releases using GitHub Actions, GitHub Releases and GitHub Pages.
+
+## Metrics exposed
+
+```prometheus
+# HELP kube_node_status The status of the nodes in the cluster (0 = not ready, 1 = ready)
+# TYPE kube_node_status gauge
+kube_node_status{node="minikube"} 1
+# HELP kube_node_status_nodes_not_ready The total number of NotReady nodes in the cluster
+# TYPE kube_node_status_nodes_not_ready gauge
+kube_node_status_nodes_not_ready 0
+# HELP kube_node_status_nodes_not_ready_ratio The ratio of NotReady nodes in the cluster
+# TYPE kube_node_status_nodes_not_ready_ratio gauge
+kube_node_status_nodes_not_ready_ratio 0
+# HELP kube_node_status_nodes_ready The total number of Ready nodes in the cluster
+# TYPE kube_node_status_nodes_ready gauge
+kube_node_status_nodes_ready 1
+# HELP kube_node_status_nodes_total The total number of nodes in the cluster
+# TYPE kube_node_status_nodes_total gauge
+kube_node_status_nodes_total 1
+```
