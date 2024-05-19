@@ -1,8 +1,5 @@
 # kube-node-status
 
-# ! TODO
-
-
 This chart installs `kube-node-status` on a Kubernetes cluster using the Helm package manager.
 
 It exposes a Prometheus metric to the cluster, reporting the status (Ready and NotReady) of nodes.
@@ -34,7 +31,6 @@ You can configure the following settings:
 | `imagePullSecrets`                              | Image pull secrets                                                                                                                | `[]`                          |
 | `nameOverride`                                  | Override the name of the chart                                                                                                    | `""`                          |
 | `fullnameOverride`                              | Override the fullname of the chart                                                                                                | `""`                          |
-| `serviceAccount.create`                         | Specifies whether a ServiceAccount should be created                                                                              | `true`                        |
 | `serviceAccount.annotations`                    | Annotations to add to the ServiceAccount                                                                                          | `{}`                          |
 | `serviceAccount.name`                           | The name of the ServiceAccount. If not set and `serviceAccount.create` is `true`, a name is generated using the fullname template | `""`                          |
 | `serviceAccount.automount`                      | AutomountServiceAccountToken controls whether a service account token should be automatically mounted                             | `true`                        |
@@ -44,9 +40,10 @@ You can configure the following settings:
 | `securityContext`                               | Security context for the container                                                                                                | `{}`                          |
 | `resources`                                     | Pod resource requests and limits                                                                                                  | `{}`                          |
 | `service.type`                                  | Kubernetes Service type                                                                                                           | `ClusterIP`                   |
-| `service.port`                                  | Kubernetes Service port                                                                                                           | `8443`                        |
 | `autoscaling.enabled`                           | Enable autoscaling for the deployment                                                                                             | `true`                        |
 | `autoscaling.minReplicas`                       | Minimum number of replicas                                                                                                        | `2`                           |
 | `autoscaling.maxReplicas`                       | Maximum number of replicas                                                                                                        | `5`                           |
 | `autoscaling.targetCPUUtilizationPercentage`    | Target CPU utilization percentage                                                                                                 | `80`                          |
 | `autoscaling.targetMemoryUtilizationPercentage` | Target memory utilization percentage                                                                                              | `80`                          |
+| `metricScraping.googleManagedPrometheus`        | Enable auto instrumented metric scraping for Google Managed Prometheus                                                            | `false`                       |
+| `metricScraping.prometheusOperator`             | Enable auto instrumented metric scraping for self managed Prometheus with Prometheus Operator                                     | `false`                       |
