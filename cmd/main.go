@@ -46,7 +46,8 @@ func recordMetrics(kc *kubernetes.Clientset) {
 			}
 			nodesReady.Set(float64(readyNodes))
 			nodesNotReady.Set(float64(len(nodes.Items) - readyNodes))
-			time.Sleep(500 * time.Millisecond)
+			nodesNotReadyRatio.Set(float64(len(nodes.Items)-readyNodes) / float64(len(nodes.Items)) * 100)
+			time.Sleep(5 * time.Second)
 		}
 	}()
 }
@@ -63,12 +64,17 @@ var (
 
 	nodesReady = promauto.NewGauge(prometheus.GaugeOpts{
 		Name: "kube_node_status_nodes_ready",
-		Help: "The total number of nodes in the cluster",
+		Help: "The total number of Ready nodes in the cluster",
 	})
 
 	nodesNotReady = promauto.NewGauge(prometheus.GaugeOpts{
 		Name: "kube_node_status_nodes_not_ready",
-		Help: "The total number of nodes in the cluster",
+		Help: "The total number of NotReady nodes in the cluster",
+	})
+
+	nodesNotReadyRatio = promauto.NewGauge(prometheus.GaugeOpts{
+		Name: "kube_node_status_nodes_not_ready_ratio",
+		Help: "The ratio of NotReady nodes in the cluster",
 	})
 
 	nodeStatus = promauto.NewGaugeVec(prometheus.GaugeOpts{
@@ -82,7 +88,7 @@ var (
 )
 
 func init() {
-	reg.MustRegister(nodesTotal, nodesReady, nodesNotReady, nodeStatus)
+	reg.MustRegister(nodesTotal, nodesReady, nodesNotReady, nodeStatus, nodesNotReadyRatio)
 }
 
 func main() {

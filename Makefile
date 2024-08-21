@@ -36,7 +36,7 @@ helm:
 > helm upgrade --install kube-node-status ./helm/kube-node-status --set image.tag=latest --namespace kube-node-status --create-namespace
 
 ### Create a complete local environment
-local: build kube
+local: build kube helm
 
 localproxy:
-> kubectl port-forward svc/kube-node-status 2112:2112
+> kubectl port-forward -n kube-node-status svc/kube-node-status 2112:2112
