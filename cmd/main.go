@@ -22,9 +22,9 @@ func recordMetrics(kc *kubernetes.Clientset) {
 		for {
 			nodes, err := kc.CoreV1().Nodes().List(context.TODO(), metav1.ListOptions{})
 			if statusError, isStatus := err.(*errors.StatusError); isStatus {
-				logger.Error("error getting nodes", statusError.ErrStatus.Message, err)
-			} else if err != nil {
-				logger.Error("error getting nodes", err)
+			logger.Error("error getting nodes", "message", statusError.ErrStatus.Message, "error", err)
+		} else if err != nil {
+			logger.Error("error getting nodes", "error", err)
 				time.Sleep(500 * time.Millisecond)
 				continue
 			}
@@ -106,5 +106,5 @@ func main() {
 
 	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
 	http.HandleFunc("/healthz", healthz)
-	logger.Error("error serving", http.ListenAndServe(":2112", nil))
+	logger.Error("error serving", "error", http.ListenAndServe(":2112", nil))
 }

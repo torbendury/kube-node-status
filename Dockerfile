@@ -1,4 +1,4 @@
-ARG GOLANG_VERSION=1.22.6-alpine
+ARG GOLANG_VERSION=1.26.0-alpine
 
 # Dev Stage
 FROM golang:${GOLANG_VERSION} AS dev
